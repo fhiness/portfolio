@@ -1,0 +1,346 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        body{
+            display: flex;
+            flex-wrap: wrap;
+            max-height: 100vh;
+            background: radial-gradient(circle at center,rgba(32, 32, 200, 0.949) 10%,black);
+            color: whitesmoke;
+            overflow-x: auto;
+            width: auto;
+            
+        }
+      
+        #nav{
+            display: flex;
+            justify-content: space-evenly;
+          align-items: center;
+            position: sticky;
+            top: 0;
+            height: 80px;
+            width: 100%;
+            background: transparent;
+            backdrop-filter: blur(50px);  
+        }
+            
+        div{
+            flex-wrap: wrap;
+            
+        }
+        .logo{
+            transform: translate(-50px);
+            color: #19efe4;
+            text-shadow: 1px 1px 0px #09face,1px 2px 1px #09face;
+            flex-wrap: wrap;
+        }
+        #link{
+            text-align: center;
+
+            flex-wrap: wrap;
+            display: flex;
+            gap: 40px;
+        
+            right: 50px;
+        }
+        #link a{
+            text-decoration: none;
+            color: aliceblue;
+            transition: 1s ease;
+            width: 60px;
+            height: 20px;
+            border-radius: 0px;
+            border-bottom: 2px solid white;
+        }
+        #link a:hover{
+            color: black;
+            background-color: aliceblue;
+            border-bottom: 2px solid black;
+            
+        }
+        
+        #home{
+            display: flex;
+            
+            justify-content: space-evenly;
+            align-items: center;
+              flex-wrap: wrap;
+              gap: 20px;
+            width: 100%;
+            height: 90%;
+        }
+        
+        .portpic{
+            
+            filter: grayscale(10%);
+            box-shadow:  5px 6px 16px #09face;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+        }   
+        
+    .name{
+        color: #09face;
+        font-weight: 3000px;
+    }
+    label{
+        width: 40px;
+        height: 20px;
+        cursor: pointer;
+        
+        
+       
+    }
+    .slide{
+        position: absolute;
+        right: 80px;
+        top: 40px;
+        background-color: white;
+        border-radius: 50px;
+        width: inherit;
+        height: inherit;
+        
+    }
+    .slide::before{
+        position: absolute;
+        content: "";
+        background-color: #09face;
+        height: 20px;
+        border-radius: 50%;
+        width: 20px;
+    }
+    label #check{
+          opacity: 0;
+          visibility: hidden;
+          
+    }
+    label #check:checked+ .slide {
+        background-color: grey;
+    }
+    label #check:checked+ .slide::before {
+        transform: translateX(20px);
+    }
+    .row2{
+        transition: 1s ease-in-out;
+        cursor: pointer;
+        
+    }
+
+    .row2:hover{
+    transform: scale(1.1);
+    }
+    
+   body:has(#check:checked){
+    transition: 2s ease-in-out;
+    background: radial-gradient(circle at center,rgba(10, 10, 42, 0.949) ,black);
+    color: #ffffff;
+
+    
+   }
+   .btn{
+      transition: 1s ease;
+       height: 30px;
+       background-color: #19efe4;
+       color: #ffffff;
+   }
+   .btn:hover {
+    color: #19efe4;
+    background-color: transparent;
+   }
+   .btn a:hover{
+    color: #19efe4;
+   }
+   .btn a{
+    text-decoration: none;
+    color: rgba(4, 4, 6, 0.993);
+
+    font-size: 17px;
+   }
+   .row1{
+     font-size: 20px;
+   }
+  
+  .point a{
+    text-decoration: none;
+    position: absolute;
+    font-size: 50px;
+    transform: rotatex(180deg);
+    bottom: 0px;
+    left: 50%;
+    right: 50%;
+    color: #19efe4;
+    animation: up 1s steps(1) infinite ;
+  }
+  @keyframes up {
+    50%{
+      transform: translateY(-40px) rotatex(180deg);
+    }
+    100%{
+      transform: translateY(0px) rotatex(180deg);
+    }
+  }
+  #navphone{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    z-index: 999;
+    border-radius: 5px;
+    right: 10px;
+    height: 40px;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    width: 40px;
+  }
+  #navphone::before{
+    position: absolute;
+    content: "| | |";
+    color: white;
+    font-size: 25px;
+    transform: rotate(90deg) translatey(-7px) translate(5px);
+  }
+  #phonenav{
+    position: fixed;
+    /*change this back to grid in javascript*/
+    display: none;
+    top: 0;
+    left: 0;
+    
+    z-index: 9999;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+  }
+  #phonenav::before{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    content: "x";
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+
+  }
+  .nac{
+    height: 50%;
+    width: 50%;
+    display: grid;
+    place-items: center;
+  }
+  #phonenav a {
+    text-decoration: none;
+    color: white;
+  }
+  #phonenav .active{
+    color: black;
+    background-color: #09face;
+
+  }
+  #link .active{
+    color: black;
+    background-color: #09face;
+  }
+    </style>
+</head>
+<body id="body" onload="func()">
+
+    <nav id="nav">
+        <h1 class="logo">FHINESS.DEV</h1>
+        
+
+
+        <div id="link">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="contact">Contact</a>
+        </div>
+
+        <label for="check">
+          <input type="checkbox" id="check" onclick="func()">
+       <span class="slide"></span>
+       </label>
+
+        <div id="navphone" onclick="shownav()"></div>
+    </nav>
+
+
+    <nav id="phonenav">
+        <div class="nac"> 
+         <a href="#home" class="active">Home</a>
+         <a href="#about">About</a>
+         <a href="#projects">Projects</a>
+         <a href="#skills">Skills</a>
+         <a href="#contact">Contact</a>
+       </div>
+     </nav>
+
+
+
+
+
+    <section id="home">       
+       <div class="row1">
+        
+        <h1>My Name Is <b class="name">ODEBUNMI QUADRI</b></h1>
+        <h4>A Proffesional WEB DEVELOPER / AI enthusiast</h4>
+        <button class="btn"><a href="mailto:quadriodebunmi41@gmail.com">get in torch</a></button>
+        <button class="btn"><a href="#">Download resume</a></button>
+        <h1 id="demo"></h1>
+        
+    
+       </div>
+        
+       <div id="row2">
+        <img src="pic3.jpg" alt="pic" class="portpic">
+       </div>
+
+
+       <div class="point"><a href="#about">^</a></div>
+
+
+       
+    </section>
+
+    <script>
+      var nav = document.getElementById("phonenav");
+      document.querySelector("#phonenav").addEventListener('click',
+        function(){
+           nav.style.display = "none";
+        }
+      );
+      function shownav() {
+        var nav = document.getElementById("phonenav");
+        nav.style.display = "grid";
+      }
+          function func() {
+            
+        var nav1 = document.getElementById("navphone");
+        var nav = document.getElementById("link"); 
+        var pic = document.getElementById("row2");
+        
+       
+        if (window.innerWidth <= 1000) {
+            nav.style.display = "none";
+            
+            
+        }
+      else if (window.innerWidth >= 1000) {
+        nav1.style.display = "none"  ;
+        pic.style.position = "relative";
+        pic.style.right = "-150px";
+      
+         }
+         else {
+            nav.style.display = "flex";
+        }
+    };
+    </script>
+</body>
+</html>
